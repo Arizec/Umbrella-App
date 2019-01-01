@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		56EEDF3221DB3D240051FC79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDF3121DB3D240051FC79 /* AppDelegate.swift */; };
-		56EEDF3421DB3D240051FC79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDF3321DB3D240051FC79 /* ViewController.swift */; };
+		56EEDF3421DB3D240051FC79 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDF3321DB3D240051FC79 /* HomeViewController.swift */; };
 		56EEDF3721DB3D240051FC79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EEDF3521DB3D240051FC79 /* Main.storyboard */; };
 		56EEDF3A21DB3D240051FC79 /* Will_It_Rain_Today.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDF3821DB3D240051FC79 /* Will_It_Rain_Today.xcdatamodeld */; };
 		56EEDF3C21DB3D250051FC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EEDF3B21DB3D250051FC79 /* Assets.xcassets */; };
 		56EEDF3F21DB3D250051FC79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EEDF3D21DB3D250051FC79 /* LaunchScreen.storyboard */; };
+		56EEDF4721DB54A80051FC79 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDF4621DB54A80051FC79 /* SettingsViewController.swift */; };
+		56EEDF4B21DB55560051FC79 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDF4A21DB55560051FC79 /* LocationViewController.swift */; };
+		56EEDF4D21DB559F0051FC79 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDF4C21DB559F0051FC79 /* AlarmViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		56EEDF2E21DB3D240051FC79 /* Will It Rain Today.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Will It Rain Today.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EEDF3121DB3D240051FC79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		56EEDF3321DB3D240051FC79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		56EEDF3321DB3D240051FC79 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		56EEDF3621DB3D240051FC79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56EEDF3921DB3D240051FC79 /* Will_It_Rain_Today.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Will_It_Rain_Today.xcdatamodel; sourceTree = "<group>"; };
 		56EEDF3B21DB3D250051FC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56EEDF3E21DB3D250051FC79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		56EEDF4021DB3D250051FC79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		56EEDF4621DB54A80051FC79 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		56EEDF4A21DB55560051FC79 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		56EEDF4C21DB559F0051FC79 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +62,8 @@
 		56EEDF3021DB3D240051FC79 /* Will It Rain Today */ = {
 			isa = PBXGroup;
 			children = (
+				56EEDF4921DB552D0051FC79 /* View Controllers */,
 				56EEDF3121DB3D240051FC79 /* AppDelegate.swift */,
-				56EEDF3321DB3D240051FC79 /* ViewController.swift */,
 				56EEDF3521DB3D240051FC79 /* Main.storyboard */,
 				56EEDF3B21DB3D250051FC79 /* Assets.xcassets */,
 				56EEDF3D21DB3D250051FC79 /* LaunchScreen.storyboard */,
@@ -65,6 +71,17 @@
 				56EEDF3821DB3D240051FC79 /* Will_It_Rain_Today.xcdatamodeld */,
 			);
 			path = "Will It Rain Today";
+			sourceTree = "<group>";
+		};
+		56EEDF4921DB552D0051FC79 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				56EEDF3321DB3D240051FC79 /* HomeViewController.swift */,
+				56EEDF4621DB54A80051FC79 /* SettingsViewController.swift */,
+				56EEDF4A21DB55560051FC79 /* LocationViewController.swift */,
+				56EEDF4C21DB559F0051FC79 /* AlarmViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56EEDF4B21DB55560051FC79 /* LocationViewController.swift in Sources */,
 				56EEDF3A21DB3D240051FC79 /* Will_It_Rain_Today.xcdatamodeld in Sources */,
-				56EEDF3421DB3D240051FC79 /* ViewController.swift in Sources */,
+				56EEDF4D21DB559F0051FC79 /* AlarmViewController.swift in Sources */,
+				56EEDF3421DB3D240051FC79 /* HomeViewController.swift in Sources */,
 				56EEDF3221DB3D240051FC79 /* AppDelegate.swift in Sources */,
+				56EEDF4721DB54A80051FC79 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
