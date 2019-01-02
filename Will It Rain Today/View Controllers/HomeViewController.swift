@@ -88,9 +88,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             case .success(let value): //Sucess - can retrieve information
                 let json = JSON(value)
                 let weather_summary = json["hourly"]["summary"]
-                let rain_status = json["hourly"]["icon"]
-                self.weatherDescription.text = "\(weather_summary)°"
-                self.rainStatus.text = "\(rain_status)°"
+                let rain_status = json["hourly"]["icon"] == "rain" ? "YES" : "NO"
+                
+                
+                self.weatherDescription.text = "\(weather_summary)"
+                self.rainStatus.text = "\(rain_status)"
                 
                 
             case .failure(let error): //ERROR - cannot load information
