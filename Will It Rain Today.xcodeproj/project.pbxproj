@@ -16,9 +16,12 @@
 		56EEDF4721DB54A80051FC79 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDF4621DB54A80051FC79 /* SettingsViewController.swift */; };
 		56EEDF4B21DB55560051FC79 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDF4A21DB55560051FC79 /* LocationViewController.swift */; };
 		56EEDF4D21DB559F0051FC79 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDF4C21DB559F0051FC79 /* AlarmViewController.swift */; };
+		96D8C65254D81B1A6BA6BE98 /* Pods_Will_It_Rain_Today.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1B390E46CB1556A705E003 /* Pods_Will_It_Rain_Today.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56587BDA21DCA78C005B0BF7 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56587BDC21DCA790005B0BF7 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EEDF2E21DB3D240051FC79 /* Will It Rain Today.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Will It Rain Today.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EEDF3121DB3D240051FC79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56EEDF3321DB3D240051FC79 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +33,9 @@
 		56EEDF4621DB54A80051FC79 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		56EEDF4A21DB55560051FC79 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		56EEDF4C21DB559F0051FC79 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		8C568A3F37E361640545929E /* Pods-Will It Rain Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Will It Rain Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Will It Rain Today/Pods-Will It Rain Today.debug.xcconfig"; sourceTree = "<group>"; };
+		CA1B390E46CB1556A705E003 /* Pods_Will_It_Rain_Today.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Will_It_Rain_Today.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD09507FE688815B16CE7E83 /* Pods-Will It Rain Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Will It Rain Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Will It Rain Today/Pods-Will It Rain Today.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +43,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96D8C65254D81B1A6BA6BE98 /* Pods_Will_It_Rain_Today.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1EF6A2915B3951C1CFECDFCA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8C568A3F37E361640545929E /* Pods-Will It Rain Today.debug.xcconfig */,
+				FD09507FE688815B16CE7E83 /* Pods-Will It Rain Today.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2D517E5C49106553F4FC9479 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				56587BDC21DCA790005B0BF7 /* SwiftyJSON.framework */,
+				56587BDA21DCA78C005B0BF7 /* Alamofire.framework */,
+				CA1B390E46CB1556A705E003 /* Pods_Will_It_Rain_Today.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		56EEDF2521DB3D240051FC79 = {
 			isa = PBXGroup;
 			children = (
 				56EEDF3021DB3D240051FC79 /* Will It Rain Today */,
 				56EEDF2F21DB3D240051FC79 /* Products */,
+				1EF6A2915B3951C1CFECDFCA /* Pods */,
+				2D517E5C49106553F4FC9479 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,9 +119,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 56EEDF4321DB3D250051FC79 /* Build configuration list for PBXNativeTarget "Will It Rain Today" */;
 			buildPhases = (
+				B8EDFFB7C014BAFC0062F5D8 /* [CP] Check Pods Manifest.lock */,
 				56EEDF2A21DB3D240051FC79 /* Sources */,
 				56EEDF2B21DB3D240051FC79 /* Frameworks */,
 				56EEDF2C21DB3D240051FC79 /* Resources */,
+				51132D5B7F8B66EBF620EDD0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -116,6 +146,7 @@
 				TargetAttributes = {
 					56EEDF2D21DB3D240051FC79 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -149,6 +180,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		51132D5B7F8B66EBF620EDD0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Will It Rain Today/Pods-Will It Rain Today-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Will It Rain Today/Pods-Will It Rain Today-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8EDFFB7C014BAFC0062F5D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Will It Rain Today-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		56EEDF2A21DB3D240051FC79 /* Sources */ = {
@@ -302,6 +378,7 @@
 		};
 		56EEDF4421DB3D250051FC79 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C568A3F37E361640545929E /* Pods-Will It Rain Today.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -313,13 +390,14 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Arizec.Will-It-Rain-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		56EEDF4521DB3D250051FC79 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD09507FE688815B16CE7E83 /* Pods-Will It Rain Today.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -331,7 +409,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Arizec.Will-It-Rain-Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

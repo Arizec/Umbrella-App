@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 var options = ["Change Location", "Set Alarm", "Settings"]
+let url = "https://api.darksky.net/forecast/00f4170d77a57f10a2d7c2f5a62da117/42.3601,-71.0589"
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet var rainStatus: UILabel!
+    
+    @IBOutlet weak var weatherDescription: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +28,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
+        
+        callApi()
     }
     
     //hide navigation bar in homepage
@@ -44,7 +53,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         cell.textLabel?.text = options[indexPath.row] //list array as table cells
         cell.backgroundColor = nil //make cells clear
         cell.textLabel?.textColor = UIColor.black //make text color white
@@ -60,16 +69,43 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if(myIndex == 0){
             performSegue(withIdentifier: "goToLocation", sender: self)
         }
-//        else if(myIndex == 1){
-//            performSegue(withIdentifier: "goToMemories", sender: self)
-//        }
-//
+        else if(myIndex == 1){
+            performSegue(withIdentifier: "goToAlarm", sender: self)
+        }
+
         else{
             performSegue(withIdentifier: "goToSettings", sender: self)
         }
         
         //unselect table view highlight
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func callApi(){
+        Alamofire.request(url, method: .get).validate().responseJSON { response in
+            //print(response)
+            switch response.result {
+            case .success(let value): //Sucess - can retrieve information
+                let json = JSON(value)
+                let weather_summary = json["hourly"]["summary"]
+                let rain_status = json["hourly"]["icon"]
+                self.weatherDescription.text = "\(weather_summary)°"
+                self.rainStatus.text = "\(rain_status)°"
+                
+                
+            case .failure(let error): //ERROR - cannot load information
+                
+                //alert the user of the error
+                let alert = UIAlertController(title: "Please enable internet", message: "The app cannot function without internet", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                print(error) //print error
+            }
+            
+            
+            
+        }
+       
     }
     
 

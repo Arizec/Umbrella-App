@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7wY-Lk-Sxa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7wY-Lk-Sxa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -91,16 +91,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rkh-kA-Vaf"/>
                     <connections>
+                        <outlet property="rainStatus" destination="SL6-Fw-5mA" id="PBX-wi-e9N"/>
                         <outlet property="tableView" destination="rW6-PD-1dm" id="t9r-jy-87r"/>
+                        <outlet property="weatherDescription" destination="RLw-Lj-om0" id="tAO-8F-Mb7"/>
                         <segue destination="Caq-Qu-lqM" kind="show" identifier="goToLocation" id="7Jv-1k-3ng"/>
                         <segue destination="D8s-Bq-AZl" kind="show" identifier="goToSettings" id="ihR-pv-xEu"/>
+                        <segue destination="yVE-F5-K1v" kind="show" identifier="goToAlarm" id="lu7-kE-WlA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="117.59999999999999" y="117.39130434782609"/>
         </scene>
-        <!--Location View Controller-->
+        <!--Location-->
         <scene sceneID="Pq2-UQ-42Q">
             <objects>
                 <viewController id="Caq-Qu-lqM" customClass="LocationViewController" customModule="Will_It_Rain_Today" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,16 +118,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhk-4t-02u">
+                                <rect key="frame" x="158" y="29" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="XwM-aF-AL9"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Location" id="ywT-WZ-TW6"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pg3-F0-uJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-317.60000000000002" y="819.94002998500753"/>
+            <point key="canvasLocation" x="-751" y="848"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Alarm-->
+        <scene sceneID="7oq-Yl-JqB">
+            <objects>
+                <viewController id="yVE-F5-K1v" customClass="AlarmViewController" customModule="Will_It_Rain_Today" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VKr-B8-V6T">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dHg-GB-gDq"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Alarm" id="lXf-oF-iiR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LbF-mQ-eoF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="25" y="848"/>
+        </scene>
+        <!--Settings-->
         <scene sceneID="EJR-5p-fs9">
             <objects>
                 <viewController id="D8s-Bq-AZl" customClass="SettingsViewController" customModule="Will_It_Rain_Today" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,10 +170,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="wLq-WZ-XbJ"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Settings" id="EIl-Tz-0Fz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Omy-v3-9sW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="500" y="820"/>
+            <point key="canvasLocation" x="794" y="848"/>
         </scene>
     </scenes>
     <resources>
