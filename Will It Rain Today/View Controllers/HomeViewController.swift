@@ -26,6 +26,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        tableView.backgroundColor = UIColor.clear
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -55,8 +58,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         cell.textLabel?.text = options[indexPath.row] //list array as table cells
-        cell.backgroundColor = nil //make cells clear
-        cell.textLabel?.textColor = UIColor.black //make text color white
+        cell.backgroundColor = UIColor.clear //make cells clear
+        cell.textLabel?.textColor = UIColor.white //make text color white
 
 
         return(cell)
