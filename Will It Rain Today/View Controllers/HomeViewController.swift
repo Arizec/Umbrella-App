@@ -25,6 +25,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var weatherDescription: UILabel!
     
+    
+    @IBOutlet weak var temperature: UILabel!
+    
     @IBOutlet weak var weeklyForecast: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,9 +100,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             case .success(let value): //Sucess - can retrieve information
                 let json = JSON(value)
                 let weather_summary = json["hourly"]["summary"]
-                let rain_status = json["hourly"]["icon"] == "rain" ? "YES" : "NO"
+                let rain_status = json["hourly"]["icon"] == "rain" ? "YES, it WILL rain today." : "NO, it will NOT rain today."
                 let weekly_forecast = json["daily"]["summary"]
+                let current_temp = json["currently"]["temperature"].int!
                 
+                self.temperature.text = "\(current_temp)°F"
                 self.weatherDescription.text = "\(weather_summary)"
                 self.rainStatus.text = "\(rain_status)"
                 self.weeklyForecast.text = "Weekly Forecast:\n\n \(weekly_forecast)"
