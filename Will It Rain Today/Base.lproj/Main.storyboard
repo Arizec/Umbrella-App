@@ -60,29 +60,40 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="04D-6C-ySh"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SL6-Fw-5mA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SL6-Fw-5mA">
                                 <rect key="frame" x="0.0" y="227" width="375" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It will NOT rain today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLw-Lj-om0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLw-Lj-om0">
                                 <rect key="frame" x="0.0" y="287" width="375" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Loading..." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lfo-l3-CyD">
+                                <rect key="frame" x="0.0" y="331" width="375" height="130"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="rW6-PD-1dm" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1GD-G0-jUL"/>
                             <constraint firstItem="SL6-Fw-5mA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="57V-hd-byD"/>
+                            <constraint firstItem="lfo-l3-CyD" firstAttribute="top" secondItem="RLw-Lj-om0" secondAttribute="bottom" constant="23" id="8Hr-Sf-ilz"/>
                             <constraint firstItem="rW6-PD-1dm" firstAttribute="top" secondItem="RLw-Lj-om0" secondAttribute="bottom" constant="175" id="ARV-aF-n41"/>
+                            <constraint firstItem="rW6-PD-1dm" firstAttribute="top" secondItem="lfo-l3-CyD" secondAttribute="bottom" constant="22" id="D5Y-7d-cQF"/>
                             <constraint firstItem="RLw-Lj-om0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="J4P-yv-sC1"/>
+                            <constraint firstItem="lfo-l3-CyD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Rza-d3-VAa"/>
                             <constraint firstItem="XNl-5X-FhX" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="UPt-nK-PeQ"/>
                             <constraint firstItem="rW6-PD-1dm" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="djI-MP-r3K"/>
                             <constraint firstItem="RLw-Lj-om0" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hd2-CI-0Mn"/>
                             <constraint firstItem="XNl-5X-FhX" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="hqJ-Hi-hZh"/>
+                            <constraint firstItem="lfo-l3-CyD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ipR-aO-Hez"/>
                             <constraint firstItem="RLw-Lj-om0" firstAttribute="top" secondItem="SL6-Fw-5mA" secondAttribute="bottom" constant="15" id="rfk-l9-IMP"/>
                             <constraint firstItem="SL6-Fw-5mA" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="sZ6-SL-4GK"/>
                             <constraint firstItem="rW6-PD-1dm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uKY-LG-kXK"/>
@@ -97,6 +108,7 @@
                         <outlet property="rainStatus" destination="SL6-Fw-5mA" id="PBX-wi-e9N"/>
                         <outlet property="tableView" destination="rW6-PD-1dm" id="t9r-jy-87r"/>
                         <outlet property="weatherDescription" destination="RLw-Lj-om0" id="tAO-8F-Mb7"/>
+                        <outlet property="weeklyForecast" destination="lfo-l3-CyD" id="kMe-gq-heO"/>
                         <segue destination="Caq-Qu-lqM" kind="show" identifier="goToLocation" id="7Jv-1k-3ng"/>
                         <segue destination="D8s-Bq-AZl" kind="show" identifier="goToSettings" id="ihR-pv-xEu"/>
                         <segue destination="yVE-F5-K1v" kind="show" identifier="goToAlarm" id="lu7-kE-WlA"/>

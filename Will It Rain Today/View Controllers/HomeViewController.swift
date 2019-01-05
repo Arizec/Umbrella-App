@@ -9,9 +9,14 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
 var options = ["Change Location", "Set Alarm", "Settings"]
 let url = "https://api.darksky.net/forecast/00f4170d77a57f10a2d7c2f5a62da117/42.3601,-71.0589"
+
+let locationManager = CLLocationManager() // create Location Manager object
+var latitude : Double?
+var longitude : Double?
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +25,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var weatherDescription: UILabel!
     
+    @IBOutlet weak var weeklyForecast: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -92,10 +98,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let json = JSON(value)
                 let weather_summary = json["hourly"]["summary"]
                 let rain_status = json["hourly"]["icon"] == "rain" ? "YES" : "NO"
-                
+                let weekly_forecast = json["daily"]["summary"]
                 
                 self.weatherDescription.text = "\(weather_summary)"
                 self.rainStatus.text = "\(rain_status)"
+                self.weeklyForecast.text = "Weekly Forecast:\n\n \(weekly_forecast)"
                 
                 
             case .failure(let error): //ERROR - cannot load information
