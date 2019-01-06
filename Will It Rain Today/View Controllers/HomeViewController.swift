@@ -10,13 +10,10 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import CoreLocation
+import MapKit
 
 var options = ["Change Location", "Set Alarm", "Settings"]
-let url = "https://api.darksky.net/forecast/00f4170d77a57f10a2d7c2f5a62da117/42.3601,-71.0589"
-
-let locationManager = CLLocationManager() // create Location Manager object
-var latitude : Double?
-var longitude : Double?
+var url = "https://api.darksky.net/forecast/00f4170d77a57f10a2d7c2f5a62da117/42.3601,-71.0589"
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
@@ -25,15 +22,34 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var weatherDescription: UILabel!
     
-    
+    @IBOutlet weak var timezone: UILabel!
     @IBOutlet weak var temperature: UILabel!
     
     @IBOutlet weak var weeklyForecast: UITextView!
+    
+    var locManager = CLLocationManager()
+    var currentLocation: CLLocation!
+    var lat = 0.0
+    var longitude = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         // Register the table view cell class and its reuse id
+        locManager.requestWhenInUseAuthorization()
+        
+        if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
+            CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+            guard let currentLocation = locManager.location else {
+                return
+            }
+            lat = currentLocation.coordinate.latitude
+            longitude = currentLocation.coordinate.longitude
+        }
+        
+        url = "https://api.darksky.net/forecast/00f4170d77a57f10a2d7c2f5a62da117/\(lat),\(longitude)"
+        
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         tableView.backgroundColor = UIColor.clear
@@ -108,6 +124,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.weatherDescription.text = "\(weather_summary)"
                 self.rainStatus.text = "\(rain_status)"
                 self.weeklyForecast.text = "Weekly Forecast:\n\n \(weekly_forecast)"
+                self.timezone.text = "\(json["timezone"])"
                 
                 
             case .failure(let error): //ERROR - cannot load information
