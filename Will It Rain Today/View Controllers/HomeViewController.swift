@@ -35,10 +35,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        
-        // Register the table view cell class and its reuse id
+        //get location
         locManager.requestWhenInUseAuthorization()
         
         if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
@@ -50,12 +48,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             longitude = currentLocation.coordinate.longitude
         }
         
+        //embed location in url
         url = "https://api.darksky.net/forecast/00f4170d77a57f10a2d7c2f5a62da117/\(lat),\(longitude)"
         
+        // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
         tableView.backgroundColor = UIColor.clear
-        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -67,23 +65,25 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.navigationController?.isNavigationBarHidden = true
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //get data from API
+        callApi()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        callApi()
-    }
     
-    
-    //return same amount of rows as count
+    //set number of rows for table view
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return options.count
     }
     
+    //set table view data cells
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         
@@ -91,8 +91,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.textLabel?.text = options[indexPath.row] //list array as table cells
         cell.backgroundColor = UIColor.clear //make cells clear
         cell.textLabel?.textColor = UIColor.white //make text color white
-
-
         return(cell)
 
     }
@@ -115,9 +113,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    //calling weather api
     func callApi(){
         Alamofire.request(url, method: .get).validate().responseJSON { response in
-            //print(response)
+            
+            //if call is successful, updata data
             switch response.result {
             case .success(let value): //Sucess - can retrieve information
                 let json = JSON(value)
@@ -133,8 +133,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.weeklyForecast.text = "Weekly Forecast:\n\n \(weekly_forecast)"
                 self.timezone.text = "\(json["timezone"])"
                 
-                
-            case .failure(let error): //ERROR - cannot load information
+            //ERROR - cannot load information
+            case .failure(let error):
                 
                 //alert the user of the error
                 let alert = UIAlertController(title: "Please enable internet", message: "The app cannot function without internet", preferredStyle: UIAlertController.Style.alert)

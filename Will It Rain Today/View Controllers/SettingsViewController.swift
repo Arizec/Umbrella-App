@@ -26,6 +26,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //show nav bar
         self.navigationController?.isNavigationBarHidden = false
         
     }
@@ -34,20 +35,11 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         //do something
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
 extension SettingsViewController{
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        (viewController as? HomeViewController)?.finalTempType = tempUnit.titleForSegment(at: tempUnit.selectedSegmentIndex)! // Here you pass the to your original view controller
+        (viewController as? HomeViewController)?.finalTempType = tempUnit.titleForSegment(at: tempUnit.selectedSegmentIndex)! // pass back data to HomeViewController
     }
 }
