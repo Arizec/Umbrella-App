@@ -31,10 +31,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var currentLocation: CLLocation!
     var lat = 0.0
     var longitude = 0.0
+    var finalTempType = "°F"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
         
         // Register the table view cell class and its reuse id
         locManager.requestWhenInUseAuthorization()
@@ -57,7 +59,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.delegate = self
         tableView.dataSource = self
         
-        callApi()
     }
     
     //hide navigation bar in homepage
@@ -71,6 +72,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        callApi()
+    }
+    
     
     //return same amount of rows as count
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -118,9 +124,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 let weather_summary = json["hourly"]["summary"]
                 let rain_status = json["hourly"]["icon"] == "rain" ? "YES, it WILL rain today." : "NO, it will NOT rain today."
                 let weekly_forecast = json["daily"]["summary"]
-                let current_temp = json["currently"]["temperature"].int!
+                let base_temp = json["currently"]["temperature"].int!
+                let current_temp = self.finalTempType == "°C" ? ((base_temp - 32) * 5/9) : base_temp
                 
-                self.temperature.text = "\(current_temp)°F"
+                self.temperature.text = "\(current_temp)\(self.finalTempType)"
                 self.weatherDescription.text = "\(weather_summary)"
                 self.rainStatus.text = "\(rain_status)"
                 self.weeklyForecast.text = "Weekly Forecast:\n\n \(weekly_forecast)"
@@ -141,6 +148,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
        
     }
+    
+    
     
 
 

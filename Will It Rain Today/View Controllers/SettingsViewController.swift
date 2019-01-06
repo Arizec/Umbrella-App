@@ -8,10 +8,13 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UINavigationControllerDelegate {
 
+    @IBOutlet weak var tempUnit: UISegmentedControl!
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        navigationController?.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -27,7 +30,10 @@ class SettingsViewController: UIViewController {
         
     }
     
-
+    @IBAction func onButtonTap(_ sender: Any) {
+        //do something
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -38,4 +44,10 @@ class SettingsViewController: UIViewController {
     }
     */
 
+}
+
+extension SettingsViewController{
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        (viewController as? HomeViewController)?.finalTempType = tempUnit.titleForSegment(at: tempUnit.selectedSegmentIndex)! // Here you pass the to your original view controller
+    }
 }
