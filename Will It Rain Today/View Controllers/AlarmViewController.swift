@@ -7,17 +7,18 @@
 //
 
 import UIKit
-import NotificationCenter
+import UserNotifications
 
-class AlarmViewController: UIViewController {
-
+class AlarmViewController: UIViewController, UNUserNotificationCenterDelegate {
  
     @IBOutlet weak var datePicker: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -32,15 +33,45 @@ class AlarmViewController: UIViewController {
     
     
     @IBAction func getTime(_ sender: Any) {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day,.month,.year], from: self.datePicker.date)
-        if let day = components.day, let month = components.month, let year = components.year {
-            let dayString = String(day)
-            let monthString = String(month)
-            let yearString = String(year)
-            
-            print(dayString, monthString, yearString)
+        
+        let center = UNUserNotificationCenter.current()
+        let options: UNAuthorizationOptions = [.alert, .sound];
+        
+        center.requestAuthorization(options: options) { (granted, error) in
+            if !granted {
+                print("Something went wrong")
+            }
         }
+        
+        center.getNotificationSettings { (settings) in
+            if settings.authorizationStatus != .authorized {
+                // Notifications not allowed
+            }
+        }
+        
+        // Swift
+        let content = UNMutableNotificationContent()
+        content.title = "Don't forget"
+        content.body = "Buy some milk"
+        content.sound = UNNotificationSound.default
+        
+        
+        
+        let calendar = Calendar.current
+        var components = calendar.dateComponents([.second, .hour, .minute, .day, .month, .year], from: self.datePicker.date)
+        components.second = 0
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+        
+        let identifier = "UYLLocalNotification"
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        center.add(request, withCompletionHandler: { (error) in
+            if let error = error {
+                // Something went wrong
+            }
+            print("added successfully")
+        })
         
     }
     
