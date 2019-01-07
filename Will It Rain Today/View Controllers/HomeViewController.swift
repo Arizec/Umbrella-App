@@ -32,6 +32,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var lat = 0.0
     var longitude = 0.0
     var finalTempType = "°F"
+    var rain_status = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -122,14 +123,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             case .success(let value): //Sucess - can retrieve information
                 let json = JSON(value)
                 let weather_summary = json["hourly"]["summary"]
-                let rain_status = json["hourly"]["icon"] == "rain" ? "YES, it WILL rain today." : "NO, it will NOT rain today."
+                self.rain_status = json["hourly"]["icon"] == "rain" ? "YES, it WILL rain today." : "NO, it will NOT rain today."
                 let weekly_forecast = json["daily"]["summary"]
                 let base_temp = json["currently"]["temperature"].int!
                 let current_temp = self.finalTempType == "°C" ? ((base_temp - 32) * 5/9) : base_temp
                 
                 self.temperature.text = "\(current_temp)\(self.finalTempType)"
                 self.weatherDescription.text = "\(weather_summary)"
-                self.rainStatus.text = "\(rain_status)"
+                self.rainStatus.text = "\(self.rain_status)"
                 self.weeklyForecast.text = "Weekly Forecast:\n\n \(weekly_forecast)"
                 self.timezone.text = "\(json["timezone"])"
                 
@@ -147,6 +148,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             
         }
        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "goToAlarm") {
+            let vc = segue.destination as! AlarmViewController
+            vc.rainToday = rain_status
+        }
     }
     
     
