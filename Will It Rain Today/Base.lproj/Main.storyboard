@@ -170,21 +170,49 @@
             </objects>
             <point key="canvasLocation" x="-751" y="848"/>
         </scene>
-        <!--Alarm-->
+        <!--Notifications-->
         <scene sceneID="7oq-Yl-JqB">
             <objects>
                 <viewController id="yVE-F5-K1v" customClass="AlarmViewController" customModule="Will_It_Rain_Today" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VKr-B8-V6T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time to notify me for rain:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7w-Ir-tZ0">
+                                <rect key="frame" x="0.0" y="113" width="375" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="h3M-fH-Nkr">
+                                <rect key="frame" x="0.0" y="172" width="375" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="568526654.16907704">
+                                    <!--2019-01-07 04:04:14 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="getTime:" destination="yVE-F5-K1v" eventType="valueChanged" id="8X2-kL-oky"/>
+                                </connections>
+                            </datePicker>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="p7w-Ir-tZ0" firstAttribute="leading" secondItem="dHg-GB-gDq" secondAttribute="leading" id="CFJ-JQ-aIg"/>
+                            <constraint firstItem="p7w-Ir-tZ0" firstAttribute="top" secondItem="dHg-GB-gDq" secondAttribute="top" constant="49" id="CHx-6R-si1"/>
+                            <constraint firstItem="p7w-Ir-tZ0" firstAttribute="trailing" secondItem="dHg-GB-gDq" secondAttribute="trailing" id="Tt5-oP-MSb"/>
+                            <constraint firstItem="h3M-fH-Nkr" firstAttribute="top" secondItem="p7w-Ir-tZ0" secondAttribute="bottom" constant="38" id="U7P-DR-ps3"/>
+                            <constraint firstItem="h3M-fH-Nkr" firstAttribute="trailing" secondItem="dHg-GB-gDq" secondAttribute="trailing" id="qf7-Lh-Xg5"/>
+                            <constraint firstItem="h3M-fH-Nkr" firstAttribute="leading" secondItem="dHg-GB-gDq" secondAttribute="leading" id="qtn-Jw-277"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dHg-GB-gDq"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Alarm" id="lXf-oF-iiR"/>
+                    <navigationItem key="navigationItem" title="Notifications" id="lXf-oF-iiR"/>
+                    <connections>
+                        <outlet property="datePicker" destination="h3M-fH-Nkr" id="I2M-UT-Umh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LbF-mQ-eoF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="25" y="848"/>
+            <point key="canvasLocation" x="24.800000000000001" y="846.9265367316342"/>
         </scene>
         <!--Settings-->
         <scene sceneID="EJR-5p-fs9">

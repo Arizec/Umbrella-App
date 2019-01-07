@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import NotificationCenter
 
 class AlarmViewController: UIViewController {
 
+ 
+    @IBOutlet weak var datePicker: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,14 +30,22 @@ class AlarmViewController: UIViewController {
         
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func getTime(_ sender: Any) {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day,.month,.year], from: self.datePicker.date)
+        if let day = components.day, let month = components.month, let year = components.year {
+            let dayString = String(day)
+            let monthString = String(month)
+            let yearString = String(year)
+            
+            print(dayString, monthString, yearString)
+        }
+        
     }
-    */
+    
+    func scheduleNotification(){
+        
+    }
 
 }
